@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+       <TableView fx:id="people_table" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="538.0">
+           <columns>
+               <TableColumn fx:id="first_name" prefWidth="92.800048828125" text="First Name" />
+               <TableColumn fx:id="last_name" prefWidth="107.199951171875" text="Last Name" />
+               <TableColumn fx:id="email" prefWidth="107.199951171875" text="Email" />
+               <TableColumn fx:id="image_link" prefWidth="107.199951171875" text="Image Link" />
+               <TableColumn fx:id="ip_address" prefWidth="122.4000305175781" text="IP Address" />
+           </columns>
+       </TableView>
+       <TableView fx:id="people_table_thread" layoutX="562.0" layoutY="14.0" prefHeight="200.0" prefWidth="538.0">
+           <columns>
+               <TableColumn fx:id="first_name_thread" prefWidth="92.800048828125" text="First Name" />
+               <TableColumn fx:id="last_name_thread" prefWidth="107.199951171875" text="Last Name" />
+               <TableColumn fx:id="email_thread" prefWidth="107.199951171875" text="Email" />
+               <TableColumn fx:id="image_link_thread" prefWidth="107.199951171875" text="Image Link" />
+               <TableColumn fx:id="ip_address_thread" prefWidth="122.4000305175781" text="IP Address" />
+           </columns>
+       </TableView>
+   </children>
+</AnchorPane>

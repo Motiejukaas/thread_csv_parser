@@ -42,6 +42,7 @@ public class Controller implements Initializable {
 
     private final String output_path = "src\\main\\resources\\com\\thread_csv_parser\\converted_files\\";
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         first_name.setCellValueFactory(new PropertyValueFactory<>("first_name"));
@@ -106,7 +107,7 @@ public class Controller implements Initializable {
     }
 
     public void addAll() {
-        new Thread(() -> createFiles()).start();
+        new Thread(this::createFiles).start();
     }
 
     private void createFiles() {
@@ -148,20 +149,18 @@ public class Controller implements Initializable {
             for (Human human : thread_data_list) {
                 executorService.execute(() -> {
                     try {
-                        Thread.sleep(60);
+                        Thread.sleep(20);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
 
-
-
-                    Platform.runLater(() -> {
-                        synchronized (people_table_thread) {
+                    synchronized (people_table_thread) {
+                        Platform.runLater(() -> {
                             if (!people_table_thread.getItems().isEmpty()) {
                                 people_table_thread.getItems().remove(human);
                             }
-                        }
-                    });
+                        });
+                    }
                     delete(human);
                 });
             }
@@ -169,18 +168,22 @@ public class Controller implements Initializable {
         executorService.shutdown();
     }
 
-    private void delete(Human human){
-        original_data_list.add(human);
-        //people_table.getItems().add(human);
-        String delete_filename = output_path + human.getFilename() + ".csv";
-        File delete_file = new File(delete_filename);
+    private void delete(Human human) {
+        synchronized (original_data_list) {
 
-        if (delete_file.exists()) {
-            if (!delete_file.delete()) {
-                System.out.println("Deletion of : " + delete_filename +  " was unsuccessful!");
+            original_data_list.add(human);
+            thread_data_list.remove(human);
+            String delete_filename = output_path + human.getFilename() + ".csv";
+            File delete_file = new File(delete_filename);
+
+            if (delete_file.exists()) {
+                if (!delete_file.delete()) {
+                    System.out.println("Deletion of: " + delete_filename + " was unsuccessful!");
+                }
+            } else {
+                System.out.println(delete_filename + " does not exist!");
             }
-        } else {
-            System.out.println(delete_filename + " does not exist!");
         }
+
     }
 }

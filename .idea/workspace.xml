@@ -41,7 +41,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Users/Motiejus/Downloads/6-20230525T231508Z-001/6",
+    "last_opened_file_path": "C:/Users/motie/Desktop/OOP/streamAPI_filters",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -67,7 +67,8 @@
       <updated>1685034935835</updated>
       <workItem from="1685034936979" duration="7617000" />
       <workItem from="1685051060782" duration="112000" />
-      <workItem from="1685051189458" duration="8037000" />
+      <workItem from="1685051189458" duration="9419000" />
+      <workItem from="1685089168410" duration="420000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1685041104856</created>
@@ -90,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685064224761</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Project completed">
+      <created>1685064367038</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685064367038</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

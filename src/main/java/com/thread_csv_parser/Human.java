@@ -6,6 +6,7 @@ public class Human {
     private String email;
     private String image_link;
     private String ip_address;
+    private String filename;
 
     public Human(String first_name, String last_name, String email, String image_link, String ip_address) {
         this.first_name = first_name;
@@ -13,6 +14,7 @@ public class Human {
         this.email = email;
         this.image_link = image_link;
         this.ip_address = ip_address;
+        generateFilename();
     }
 
     public String getFirst_name() {
@@ -53,5 +55,21 @@ public class Human {
 
     public void setIp_address(String ip_address) {
         this.ip_address = ip_address;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public void generateFilename() {
+        String first_name_filename = first_name.substring(0, Math.min(first_name.length(), 3));
+        String last_name_filename = last_name.substring(0, Math.min(last_name.length(), 3));
+        String last_numbers = ip_address.substring(ip_address.lastIndexOf('.') + 1);
+
+        this.filename = first_name_filename + last_name_filename + last_numbers;
     }
 }

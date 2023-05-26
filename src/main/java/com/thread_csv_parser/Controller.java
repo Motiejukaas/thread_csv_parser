@@ -20,6 +20,8 @@ import java.util.concurrent.Executors;
 
 public class Controller implements Initializable {
     @FXML
+    public Button remove_all;
+    @FXML
     private TableView<Human> people_table;
 
     @FXML
@@ -110,6 +112,7 @@ public class Controller implements Initializable {
         new Thread(this::createFiles).start();
     }
 
+
     private void createFiles() {
         thread_data_list = FXCollections.observableArrayList(original_data_list);
         ExecutorService executorService = Executors.newFixedThreadPool(MAX_THREADS);
@@ -118,7 +121,7 @@ public class Controller implements Initializable {
             executorService.execute(() -> {
 
                 try {
-                    Thread.sleep(50);
+                    Thread.sleep(20);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -140,6 +143,7 @@ public class Controller implements Initializable {
         }
 
         executorService.shutdown();
+        remove_all.setDisable(false);
     }
 
     public void removeAll() {
@@ -166,6 +170,7 @@ public class Controller implements Initializable {
             }
         }
         executorService.shutdown();
+        remove_all.setDisable(false);
     }
 
     private void delete(Human human) {

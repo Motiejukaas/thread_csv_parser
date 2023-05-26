@@ -14,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -41,7 +40,7 @@ public class Controller implements Initializable {
     private ObservableList<Human> thread_data_list;
 
 
-    private String output_path = "src\\main\\resources\\com\\thread_csv_parser\\converted_files\\";
+    private final String output_path = "src\\main\\resources\\com\\thread_csv_parser\\converted_files\\";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -64,8 +63,9 @@ public class Controller implements Initializable {
         people_table.setItems(original_data_list);
 
         action_thread.setCellFactory(column -> {
-            TableCell<Human, Void> cell = new TableCell<Human, Void>() {
-                private Button deleteButton = new Button("Delete");
+            TableCell<Human, Void> cell = new TableCell<>() {
+                private final Button deleteButton = new Button("Delete");
+
                 {
                     deleteButton.setOnAction(event -> {
                         Human human = getTableRow().getItem();
@@ -105,7 +105,7 @@ public class Controller implements Initializable {
         }
     }
 
-    public void addAll(ActionEvent actionEvent) {
+    public void addAll() {
         new Thread(() -> createFiles()).start();
     }
 
@@ -141,7 +141,7 @@ public class Controller implements Initializable {
         executorService.shutdown();
     }
 
-    public void removeAll(ActionEvent actionEvent) {
+    public void removeAll() {
         ExecutorService executorService = Executors.newFixedThreadPool(MAX_THREADS);
 
         synchronized (thread_data_list) {
